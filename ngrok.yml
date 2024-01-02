@@ -1,0 +1,6 @@
+version: "2"
+authtoken: xxx
+tunnels:
+  wmprinter:
+    proto: http
+    addr: 8000
