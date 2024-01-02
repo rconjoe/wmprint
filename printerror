@@ -10,7 +10,7 @@ printfile=/tmp/DEVTERM_PRINTER_IN
 
 echo " " > "$printfile"
 echo "==================================" > "$printfile"
-echo "ERROR :: WINDMILL.VRAI.DEV" > "$printfile"
+echo "ERROR :: WINDMILL" > "$printfile"
 echo "$(date)" > "$printfile"
 echo "==================================" > "$printfile"
 echo "name:" > "$printfile"
