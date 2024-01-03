@@ -16,17 +16,20 @@ const server = http.createServer((req, res) => {
         const data = JSON.parse(body);
 
         // Execute the echo command with the interpolated string
-        exec(`/home/trog/wmprint/printerror "${data.name}" "${data.message}" "${data.reason}" "${data.canceler}"`, (error, stdout, stderr) => {
-          if (error) {
-            res.writeHead(500);
-            res.end(`Server error: ${error.message}`);
-            return;
-          }
+        exec(
+          `/home/trog/wmprint/printerror "${data.name}" "${data.message}" "${data.reason}" "${data.stack}" "${data.canceler}"`,
+          (error, stdout, stderr) => {
+            if (error) {
+              res.writeHead(500);
+              res.end(`Server error: ${error.message}`);
+              return;
+            }
 
-	  res.writeHead(200)
-	  res.end('ok')
-		return;
-        });
+            res.writeHead(200);
+            res.end("ok");
+            return;
+          },
+        );
       } catch (error) {
         // Handle JSON parsing error or other errors
         res.writeHead(400);
@@ -45,4 +48,3 @@ const PORT = 8000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
